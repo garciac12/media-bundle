@@ -26,10 +26,11 @@ class LocalFileRepository implements FileRepositoryInterface
 
     public function upload(UploadedFileRequest $uploadedFileRequest): File
     {
+        $path = (new \DateTime('now'))->format('/Y/m');
         $name = $this->safeFileName->__invoke($uploadedFileRequest->name(), $uploadedFileRequest->extension());
         $file = new File(
             $name,
-            $name, // TODO: support new directory in path
+            $path . DIRECTORY_SEPARATOR . $name, // TODO: support new directory in path
             $uploadedFileRequest->mime(),
             $uploadedFileRequest->extension(),
             $uploadedFileRequest->size()
@@ -38,7 +39,7 @@ class LocalFileRepository implements FileRepositoryInterface
         // TODO: support new directory in path
         $this->rename(
             $uploadedFileRequest->path(),
-            $this->filePathResolver->resolve($file->name())
+            $this->filePathResolver->resolve($path . DIRECTORY_SEPARATOR.$file->name())
         );
 
         return $file;
