@@ -12,10 +12,10 @@ final class Description
 {
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private readonly string $alt;
+    private readonly string $alt = '';
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private readonly string $title;
+    private readonly string $title = '';
 
     public function __construct(string $alt, ?string $title = null)
     {
