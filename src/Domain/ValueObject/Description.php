@@ -25,12 +25,12 @@ final class Description
 
     public function alt(): string
     {
-        return $this->alt;
+        return $this->alt ?? '';
     }
 
     public function title(): string
     {
-        return $this->title;
+        return $this->title  ?? '';
     }
 
 
