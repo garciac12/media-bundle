@@ -60,7 +60,7 @@ final class FileResponse implements ResponseDtoInterface
     public function mimeSubType(): string
     {
         $subType = explode('/', $this->mime);
-        return count($subType) > 0  ? $subType[1] : '';
+        return count($subType) > 1  ? $subType[1] : '';
     }
 
     public function extension(): string
