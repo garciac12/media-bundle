@@ -12,10 +12,10 @@ final class Description
 {
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private string $alt = '';
+    private ?string $alt = '';
 
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private string $title = '';
+    private ?string $title = '';
 
     public function __construct(string $alt, ?string $title = null)
     {
